@@ -9,12 +9,13 @@
 // Remark: disconnect the rx serial wire to the ID-12 when uploading the sketch
 
 #include <Ethernet.h>
+#include <SPI.h>
 
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x00, 0x3B, 0x8C };  //underneath the shield
 byte ip[] = { 10, 0, 1, 250 };       //self assigned internal IP
 byte server[] = { 10, 0, 1, 4 }; // IP of endpoint 
 
-Client client(server, 80);
+EthernetClient client;
 
 boolean found_status_200;
 char *found;
@@ -115,7 +116,7 @@ bool checkAccessToBuilding(char cardNum[10])
   
    Serial.println("connecting...");
   
-   if (client.connect()) 
+   if (client.connect(server, 80)) 
    {
      Serial.println("connected");
      client.print("GET /unlock?id=");
