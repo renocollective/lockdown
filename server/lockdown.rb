@@ -9,8 +9,6 @@ class Lockdown
   TWITTER = JSON.parse(File.open("config/twitter.json") { |file| file.read })
   KEYS    = JSON.parse(File.open("config/keys.json") { |file| file.read })
 
-  NOTIFY  = false
-
   # Configure twitter before we start the server
   Twitter.configure do |config|
     config.consumer_key = TWITTER["consumer_key"]
@@ -43,8 +41,6 @@ class Lockdown
   end
 
   def notify(msg)
-    return unless NOTIFY
-
     twitter = Twitter::Client.new(
       :oauth_token => TWITTER["oauth_token"],
       :oauth_token_secret => TWITTER["oauth_token_secret"]

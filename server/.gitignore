@@ -5,3 +5,4 @@ twitter.json
 keys.json
 
 log/*.log
+tmp/*.*
