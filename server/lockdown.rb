@@ -27,10 +27,12 @@ class Lockdown
       if account = KEYS[scanned]
         msg = "Unlocking the door for #{account}"
         @logger.info msg
+        notify msg
         [ 200, content_type, [msg] ]
       else
         msg = "Can't open the door for unknown RFID."
         @logger.error msg
+        notify msg
         [ 503, content_type, [msg] ]
       end
     else
