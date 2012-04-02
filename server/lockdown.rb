@@ -48,7 +48,7 @@ class Lockdown
       :oauth_token_secret => TWITTER["oauth_token_secret"]
     )
 
-    twitter.update(msg)
+    twitter.update("#{msg} #{Time.now.to_s}")
   rescue Exception => e
     puts "There was a problem tweeting the status ..."
     puts e.inspect
