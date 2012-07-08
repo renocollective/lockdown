@@ -1,13 +1,9 @@
 # Lockdown for Reno Collective
-require "json"
 require "twitter"
 require "celluloid"
 
 class Tweet
   include Celluloid
-
-  # Load external configuration information
-  TWITTER = JSON.parse(File.open("config/twitter.json") { |file| file.read })
 
   # Configure twitter before we start the server
   Twitter.configure do |config|

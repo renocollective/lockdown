@@ -1,4 +1,4 @@
-require "./lockdown"
+require "./lib/lockdown"
 
 # Fire it up!!
-run Lockdown.new
+run Lockdown::Server.new
