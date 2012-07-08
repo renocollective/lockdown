@@ -21,7 +21,7 @@ module Lockdown
     def tweet(msg)
       the_tweet = "#{msg} #{Time.now.to_s}"
 
-      if ENV["RACK_ENV"] == "development"
+      if Lockdown.development?
         @logger.info ">> Would have tweeted #{the_tweet}"
       else
         @twitter = Twitter::Client.new(
