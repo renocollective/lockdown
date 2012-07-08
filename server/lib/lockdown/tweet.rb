@@ -13,9 +13,8 @@ module Lockdown
       config.consumer_secret = Lockdown::TWITTER_CREDENTIALS["consumer_secret"]
     end
 
-    def initialize(logger = nil)
-      Celluloid.logger = logger if logger
-      @logger = Celluloid.logger
+    def initialize
+      @logger = Celluloid.logger = Lockdown::LOGGER
     end
 
     def tweet(msg)

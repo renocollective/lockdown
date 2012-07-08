@@ -4,7 +4,7 @@ module Lockdown
 
     def call(env)
       @logger = Lockdown::LOGGER
-      @tweet  = Tweet.new(@logger)
+      @tweet  = Tweet.new
 
       content_type = { "Content-Type" => "text/html" }
       request      = Rack::Request.new(env)
