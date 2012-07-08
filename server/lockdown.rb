@@ -1,22 +1,16 @@
 # Lockdown for Reno Collective
 require "json"
-require "twitter"
 require "logger"
+require "./tweet"
 
 # The "server"
 class Lockdown
   # Load external configuration information
-  TWITTER = JSON.parse(File.open("config/twitter.json") { |file| file.read })
-  KEYS    = JSON.parse(File.open("config/keys.json") { |file| file.read })
-
-  # Configure twitter before we start the server
-  Twitter.configure do |config|
-    config.consumer_key = TWITTER["consumer_key"]
-    config.consumer_secret = TWITTER["consumer_secret"]
-  end
+  KEYS   = JSON.parse(File.open("config/keys.json") { |file| file.read })
 
   def call(env)
     @logger = Logger.new("log/lockdown.log")
+    @tweet  = Tweet.new
 
     content_type = {"Content-Type" => "text/html"}
     request      = Rack::Request.new(env)
@@ -43,14 +37,6 @@ class Lockdown
   end
 
   def notify(msg)
-    twitter = Twitter::Client.new(
-      :oauth_token => TWITTER["oauth_token"],
-      :oauth_token_secret => TWITTER["oauth_token_secret"]
-    )
-
-    twitter.update("#{msg} #{Time.now.to_s}")
-  rescue Exception => e
-    puts "There was a problem tweeting the status ..."
-    puts e.inspect
+    @tweet.tweet(msg)
   end
 end
