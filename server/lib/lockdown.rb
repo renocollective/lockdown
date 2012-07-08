@@ -11,6 +11,8 @@ module Lockdown
   end
 
   # Load external configuration information
-  KEYS = JSON.parse(File.open("config/keys.json") { |file| file.read })
+  KEYS   = JSON.parse(File.open("config/keys.json") { |file| file.read })
+  LOGGER = development? ? Logger.new(STDOUT) : Logger.new("log/lockdown.log")
+
 end
 

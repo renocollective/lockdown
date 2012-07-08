@@ -3,7 +3,7 @@ module Lockdown
   class Server
 
     def call(env)
-      @logger = Logger.new("log/lockdown.log")
+      @logger = Lockdown::LOGGER
       @tweet  = Tweet.new(@logger)
 
       content_type = { "Content-Type" => "text/html" }
