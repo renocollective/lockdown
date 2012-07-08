@@ -1,8 +1,11 @@
 # Lockdown for Reno Collective
 require "json"
 require "twitter"
+require "celluloid"
 
 class Tweet
+  include Celluloid
+
   # Load external configuration information
   TWITTER = JSON.parse(File.open("config/twitter.json") { |file| file.read })
 
@@ -13,7 +16,8 @@ class Tweet
   end
 
   def initialize(logger = nil)
-    @logger = logger ||= Logger.new(STDOUT)
+    Celluloid.logger = logger if logger
+    @logger = Celluloid.logger
   end
 
   def tweet(msg)

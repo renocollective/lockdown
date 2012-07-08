@@ -37,6 +37,7 @@ class Lockdown
   end
 
   def notify(msg)
-    @tweet.tweet(msg)
+    # use celluloid to do this async
+    @tweet.tweet!(msg)
   end
 end
