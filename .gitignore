@@ -1,8 +1,7 @@
 .DS_Store
+*.log
 
 # ignore the configuration files (They have secrets!!)
 twitter.json
 keys.json
 
-log/*.log
-tmp/*.*
