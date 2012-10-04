@@ -4,7 +4,7 @@ require "twitter"
 require "celluloid"
 
 module Lockdown
-  TWITTER_CREDENTIALS = JSON.parse(File.open("config/twitter.json") { |file| file.read })
+  TWITTER_CREDENTIALS = JSON.parse(File.open(Lockdown.config_path("twitter.json")) { |file| file.read })
 
   class Twitter
     include Celluloid
