@@ -32,7 +32,7 @@ module Lockdown
 
     def notify(msg)
       # use celluloid to do this async
-      @twitter.tweet!(msg)
+      @twitter.async.tweet(msg)
     end
   end
 end
