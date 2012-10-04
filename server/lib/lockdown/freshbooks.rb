@@ -144,7 +144,7 @@ module Lockdown
           key  = "#{contact["phone2"]}"
           name = "#{contact["first_name"]} #{contact["last_name"]}"
 
-          @active_keys[key] = name if "#{key}".strip.empty?
+          @active_keys[key] = name unless "#{key}".strip.empty?
         end
       end
 
