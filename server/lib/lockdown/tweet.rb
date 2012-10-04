@@ -10,7 +10,7 @@ module Lockdown
     include Celluloid
 
     # Configure twitter before we start the server
-    Twitter.configure do |config|
+    ::Twitter.configure do |config|
       config.consumer_key    = Lockdown::TWITTER_CREDENTIALS["consumer_key"]
       config.consumer_secret = Lockdown::TWITTER_CREDENTIALS["consumer_secret"]
     end
@@ -25,7 +25,7 @@ module Lockdown
       if Lockdown.development?
         @logger.info ">> Would have tweeted #{the_tweet}"
       else
-        @twitter = Twitter::Client.new(
+        @twitter = ::Twitter::Client.new(
           oauth_token:        Lockdown::TWITTER_CREDENTIALS["oauth_token"],
           oauth_token_secret: Lockdown::TWITTER_CREDENTIALS["oauth_token_secret"]
         )

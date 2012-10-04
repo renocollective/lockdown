@@ -9,7 +9,7 @@ module Lockdown
     PER_PAGE = 25
 
     def initialize(account, token)
-      @client = FreshBooks::Client.new(account, token)
+      @client = ::FreshBooks::Client.new(account, token)
     end
 
     def connection
