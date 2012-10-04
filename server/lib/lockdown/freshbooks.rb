@@ -141,7 +141,7 @@ module Lockdown
 
       active_client_contacts.each do |client|
         client["contacts"].each do |contact|
-          key  = "#{contact["phone2"]}"
+          key  = "#{contact["phone2"]}"[0..9]   # trim to 10 characters
           name = "#{contact["first_name"]} #{contact["last_name"]}"
 
           @active_keys[key] = name unless "#{key}".strip.empty?
