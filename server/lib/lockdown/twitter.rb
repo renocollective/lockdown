@@ -6,7 +6,7 @@ require "celluloid"
 module Lockdown
   TWITTER_CREDENTIALS = JSON.parse(File.open("config/twitter.json") { |file| file.read })
 
-  class Tweet
+  class Twitter
     include Celluloid
 
     # Configure twitter before we start the server

@@ -3,7 +3,7 @@
 require "json"
 require "logger"
 require_relative "lockdown/server"
-require_relative "lockdown/tweet"
+require_relative "lockdown/twitter"
 
 # Lockdown for Reno Collective
 module Lockdown

@@ -3,8 +3,8 @@ module Lockdown
   class Server
 
     def call(env)
-      @logger = Lockdown::LOGGER
-      @tweet  = Tweet.new
+      @logger  = Lockdown::LOGGER
+      @twitter = Lockdown::Twitter.new
 
       content_type = { "Content-Type" => "text/html" }
       request      = Rack::Request.new(env)
@@ -32,7 +32,7 @@ module Lockdown
 
     def notify(msg)
       # use celluloid to do this async
-      @tweet.tweet!(msg)
+      @twitter.tweet!(msg)
     end
   end
 end
