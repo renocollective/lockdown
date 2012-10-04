@@ -139,7 +139,7 @@ module Lockdown
 
       @active_keys = {}
 
-      fb.active_client_contacts.each do |client|
+      active_client_contacts.each do |client|
         client["contacts"].each do |contact|
           key  = "#{contact["phone2"]}"
           name = "#{contact["first_name"]} #{contact["last_name"]}"
