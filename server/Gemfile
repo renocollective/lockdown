@@ -2,7 +2,7 @@
 source "http://rubygems.org"
 
 gem "rack",            "~> 1.4.1"
-gem "twitter",         "~> 2.2.0"
+gem "twitter",         "~> 4.6.0"
 gem "json",            "~> 1.6.6"
 gem "celluloid",       "~> 0.12.0"
 gem "ruby-freshbooks", "~> 0.4.1"
